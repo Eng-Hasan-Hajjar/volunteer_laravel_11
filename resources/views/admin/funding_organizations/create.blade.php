@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container text-right">
+<div class="container text-right" dir="rtl">
     <h2>إضافة تمويل منظمة جديد</h2>
     <form action="{{ route('funding-organizations.store') }}" method="POST">
         @csrf

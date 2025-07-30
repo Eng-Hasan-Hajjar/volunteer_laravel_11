@@ -17,12 +17,12 @@
     </section>
 
     <section class="content" dir="rtl">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title text-right">قائمة الأشخاص</h3>
+        <div class="container-fluid text-right">
+            <div class="row"  dir="rtl">
+                <div class="col-12 text-right"  dir="rtl">
+                    <div class="card text-right"  dir="rtl">
+                        <div class="card-header text-right" dir="rtl">
+                           
                         </div>
                         <div class="card-body">
                             @if (session('success'))

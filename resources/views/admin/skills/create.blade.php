@@ -7,7 +7,7 @@
         @csrf
         <div class="mb-3">
             <label for="skill_name" class="form-label">اسم المهارة</label>
-            <input type="text" name="skill_name" class="form-control" required>
+            <input type="text" name="skill_name" class="form-control text-right" required>
         </ aspiration>
         <button type="submit" class="btn btn-success">حفظ</button>
     </form>

@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container" dir="rtl">
+<div class="container text-right" dir="rtl">
     <h2 class="text-right">تمويل المنظمات</h2>
     <a href="{{ route('funding-organizations.create') }}" class="btn btn-primary float-right mb-3">إضافة تمويل منظمة جديد</a>
     <table class="table table-bordered mt-3">

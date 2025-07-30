@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container text-right"  dir="rtl">
     <h2>تعديل الدعم المالي</h2>
     <form action="{{ route('financial-supports.update', $financialSupport) }}" method="POST">
         @csrf

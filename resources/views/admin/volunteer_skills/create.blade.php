@@ -1,11 +1,11 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container  text-right">
+<div class="container  text-right" dir="rtl">
     <h2>إضافة مهارة متطوع جديدة</h2>
     <form action="{{ route('volunteer-skills.store') }}" method="POST">
         @csrf
-        <div class="mb-3">
+        <div class="mb-3"dir="rtl">
             <label for="id_volunteer" class="form-label">المتطوع</label>
             <select name="id_volunteer" class="form-control  text-right" required>
                 <option value="">اختر المتطوع</option>
@@ -14,7 +14,7 @@
                 @endforeach
             </select>
         </div>
-        <div class="mb-3">
+        <div class="mb-3"dir="rtl">
             <label for="id_skills" class="form-label  text-right">المهارة</label>
             <select name="id_skills" class="form-control  text-right" required>
                 <option value="">اختر المهارة</option>
@@ -23,9 +23,9 @@
                 @endforeach
             </select>
         </div>
-        <div class="mb-3">
+        <div class="mb-3" dir="rtl">
             <label for="experience_period" class="form-label">مدة الخبرة (بالأشهر)</label>
-            <input type="number" name="experience_period" class="form-control  " required min="0">
+            <input type="number" name="experience_period" class="form-control text-right " required min="0">
         </div>
         <button type="submit" class="btn btn-success">حفظ</button>
     </form>

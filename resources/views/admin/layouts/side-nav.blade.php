@@ -48,7 +48,20 @@
                   
               
 
-              
+
+
+              <li class="nav-item">
+                <a href="{{ route('people.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> المنسقين</p>
+                </a>
+              </li> 
+             <li class="nav-item">
+                <a href="{{ route('volunteers.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> المتطوعين</p>
+                </a>
+              </li> 
               <li class="nav-item">
                 <a href="{{ route('skills.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -56,7 +69,7 @@
                 </a>
               </li> 
 
-
+            
           
               <li class="nav-item">
                 <a href="{{ route('volunteer-skills.index') }}" class="nav-link">
@@ -74,6 +87,12 @@
               </li> 
 
 
+              <li class="nav-item">
+                <a href="{{ route('events.index') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> الفعالية  </p>
+                </a>
+              </li>
                   
               <li class="nav-item">
                 <a href="{{ route('employed-available-resources.index') }}" class="nav-link">
@@ -112,31 +131,10 @@
                     
              
 
-
-
-              <li class="nav-item">
-                <a href="{{ route('people.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p> المنسقين</p>
-                </a>
-              </li> 
                  
               
                 
-              <li class="nav-item">
-                <a href="{{ route('volunteers.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p> المتطوعين</p>
-                </a>
-              </li> 
-
-                 
-              <li class="nav-item">
-                <a href="{{ route('events.index') }}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p> الفعالية  </p>
-                </a>
-              </li>
+      
               
 
               <li class="nav-item d-none d-sm-inline-block">

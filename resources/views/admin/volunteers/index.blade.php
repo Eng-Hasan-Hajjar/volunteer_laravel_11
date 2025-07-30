@@ -1,10 +1,10 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container text-right" dir="rtl">
     <h2>المتطوعون</h2>
-    <a href="{{ route('volunteers.create') }}" class="btn btn-primary">إضافة متطوع جديد</a>
-    <table class="table table-bordered mt-3">
+    <a href="{{ route('volunteers.create') }}" class="btn btn-primary text-right">إضافة متطوع جديد</a>
+    <table class="table table-bordered mt-3 text-right">
         <thead>
             <tr>
                 <th>اسم الشخص</th>

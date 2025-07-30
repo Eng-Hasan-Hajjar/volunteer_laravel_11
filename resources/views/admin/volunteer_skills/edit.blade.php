@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container text-right" dir="rtl" >
     <h2>تعديل مهارة المتطوع</h2>
     <form action="{{ route('volunteer-skills.update', $volunteerSkill) }}" method="POST">
         @csrf
