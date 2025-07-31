@@ -4,14 +4,15 @@
             <aside class="main-sidebar sidebar-light-primary elevation-4">
     @endif
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
+    <a href="#" class="brand-link  text-center" dir="rtl">
       @if(auth()->user()->profile_image)
       <img src="{{ asset('storage/'. auth()->user()->profile_image) }}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       @else
           <p></p>
       @endif
-      <span class="brand-text font-weight-light"> نظام المتطوعين </span>
+      <span class="brand-text font-weight-light text-right" dir="rtl"> نظام المتطوعين </span>
     </a>
+       <br>
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
@@ -22,7 +23,7 @@
           <!-- صلاحيات المستخدم -->
         </div>
       </div>
-    
+ 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -156,12 +157,6 @@
                           </a>
                         </li>
              
-                        <li class="nav-item">
-                          <a href="./roles" class="nav-link ">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>الأدوار</p>
-                          </a>
-                        </li>
                      
                @endif
               <li class="nav-item">

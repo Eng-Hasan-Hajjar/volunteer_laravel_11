@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class VolunteerController extends Controller
 {
-     public function index_web()
+     public function index_web2()
     { 
        /* $locations = Location::all();
         $propertyTypes = PropertyType::withCount('properties')->get(); // جلب الأنواع مع عدد العقارات
@@ -62,5 +62,23 @@ class VolunteerController extends Controller
     {
         $volunteer->delete();
         return redirect()->route('volunteers.index')->with('success', 'تم حذف المتطوع بنجاح.');
+    }
+
+    
+    public function index_web(Volunteer $volunteer)
+    {
+        $volunteers = Volunteer::get();
+        return view('website.pages.volunteers', compact('volunteers'));
+    }
+    public function index_web_single(Volunteer $volunteer)
+    {
+
+        // Remove dd() for production, it's only for debugging
+        // dd($organization);
+        if (!$volunteer->exists) {
+            abort(404); // Return 404 if organization not found
+        }
+   // dd($organization);
+        return view('website.pages.volunteers_single', compact('volunteer'));
     }
 }

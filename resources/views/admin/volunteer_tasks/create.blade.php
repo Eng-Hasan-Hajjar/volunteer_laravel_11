@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container  text-right">
+<div class="container  text-right" dir="rtl">
     <h2>إضافة مهمة متطوع جديدة</h2>
     <form action="{{ route('volunteer-tasks.store') }}" method="POST">
         @csrf

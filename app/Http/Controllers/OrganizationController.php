@@ -89,4 +89,22 @@ class OrganizationController extends Controller
         return redirect()->route('events.index')->with('success', 'تم حذف المنظمة بنجاح.');
 
     }
+
+
+    public function index_web(Organization $organization)
+    {
+        $organizations = Organization::get();
+        return view('website.pages.organizations', compact('organizations'));
+    }
+    public function index_web_single(Organization $organization)
+    {
+
+        // Remove dd() for production, it's only for debugging
+        // dd($organization);
+        if (!$organization->exists) {
+            abort(404); // Return 404 if organization not found
+        }
+   // dd($organization);
+        return view('website.pages.organizations-single', compact('organization'));
+    }
 }

@@ -57,12 +57,15 @@ Route::resource('skills', SkillController::class);
 
 use App\Http\Controllers\OrganizationController;
 Route::resource('organizations', OrganizationController::class);
-
+Route::get('/web_organizations',[ OrganizationController::class,'index_web'])->name('web_organizations');
+Route::get('/web_organizations_single/{organization}',[ OrganizationController::class,'index_web_single'])->name('web_organizations_single');
 use App\Http\Controllers\VolunteerSkillController;
 Route::resource('volunteer-skills', VolunteerSkillController::class);
 
 
 Route::resource('volunteers', VolunteerController::class);
+Route::get('/web_volunteers',[ VolunteerController::class,'index_web'])->name('web_volunteers');
+Route::get('/web_volunteers_single/{volunteer}',[ VolunteerController::class,'index_web_single'])->name('web_volunteers_single');
 
 
 
