@@ -29,7 +29,7 @@
                             <div class="main-menu">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="index.html">الرئيسية</a></li>
+                                        <li><a href="{{ route(name: 'main_home') }}">الرئيسية</a></li>
                                          <li class="nav-item">
                                             <a class="nav-link" href="{{ route('web_volunteers') }}">متطوعنا</a>
                                         </li>
@@ -37,11 +37,11 @@
                                             <a class="nav-link" href="{{ route('web_organizations') }}"> منظماتنا</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('events.index') }}"> فعالياتنا</a>
+                                            <a class="nav-link" href="{{ route('web_events') }}"> فعالياتنا</a>
                                         </li>
-                                        <li><a href="About.html">من نحن</a></li>
+                                        <li><a href="{{ route('about') }}">من نحن</a></li>
                                      
-                                        <li><a href="contact.html">اتصل بنا</a></li>
+                                        <li><a href="{{ route('contact') }}">اتصل بنا</a></li>
                                     </ul>
                                 </nav>
 

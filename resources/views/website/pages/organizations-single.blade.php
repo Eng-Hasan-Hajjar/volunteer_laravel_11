@@ -8,17 +8,13 @@
   @include('website.layouts.header')
 
 
-  <br>
-  <br>
-  <br>
-  <br>
 
 
-  
+
 
   <div class="slider_area" style="height: 80vh; position: relative; overflow: hidden;">
   <div class="single_slider d-flex align-items-center justify-content-center">
-    <div class="text-overlay" style="background: rgba(0, 0, 0, 0.5);">
+    <div class="text-overlay" style="background: #ffffff;">
       <div class="slider_text active" style="background: linear-gradient(135deg, #0053c0 0%, #1e90ff 100%); padding: 50px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); max-width: 800px; width: 90%;">
         <h2 class="text-white font-weight-bold mb-4" style="font-size: 2.5rem; text-transform: uppercase; letter-spacing: 2px;">{{ $organization->organization_name }}</h2>
         <div class="row">

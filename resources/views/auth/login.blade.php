@@ -28,7 +28,7 @@
 
         <div class="flex items-center justify-end mt-4">
             <x-primary-button class="ms-3" >
-              <a href="{{ route('indexproperty') }}"> website   </a>
+              <a href="{{ route('main_home') }}"> website   </a>
             </x-primary-button>
             <x-primary-button class="ms-3" >
                 <a href="{{ route('register') }}"> register   </a>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 
 @include('website.layouts.head')
 
@@ -67,6 +67,8 @@
                       @endforelse
                     </ul>
                   </div>
+
+                  <br>
                   <div class="collapsible-section mb-4 text-center">
                     <h4 style="color: #0053c0; margin-bottom: 10px; cursor: pointer;" onclick="this.classList.toggle('active'); var content = this.nextElementSibling; content.style.display = content.style.display === 'block' ? 'none' : 'block';">
                       المهام <span style="color: #1e90ff;">(عدد: {{ $volunteer->volunteerTasks->count() }})</span>

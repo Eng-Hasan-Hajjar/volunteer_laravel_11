@@ -8,13 +8,9 @@ use Illuminate\Http\Request;
 
 class VolunteerController extends Controller
 {
-     public function index_web2()
+     public function index_web_main()
     { 
-       /* $locations = Location::all();
-        $propertyTypes = PropertyType::withCount('properties')->get(); // جلب الأنواع مع عدد العقارات
-        $properties = Property::with('images')->paginate(10);
-        $comments = Comment::all();
-        */
+      
         return view('website.index');
     }
     

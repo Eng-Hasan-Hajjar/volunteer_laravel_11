@@ -64,4 +64,22 @@ class EventController extends Controller
         $event->delete();
         return redirect()->route('events.index')->with('success', 'تم حذف الفعالية بنجاح.');
     }
+
+        
+    public function index_web(Event $event)
+    {
+        $events = Event::get();
+        return view('website.pages.events', compact('events'));
+    }
+    public function index_web_single(Event $event)
+    {
+
+        if (!$event->exists) {
+            abort(404); // Return 404 if organization not found
+        }
+        // dd($organization);
+        return view('website.pages.events_single', compact('event'));
+    }
+
+
 }

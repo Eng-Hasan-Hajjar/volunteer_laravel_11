@@ -41,13 +41,17 @@ Route::get('template',function(){
 });
 /**************************************************   website   */
 
-Route::get('/', [VolunteerController::class, 'index_web'])->name('indexproperty'); 
+Route::get('/', [VolunteerController::class, 'index_web_main'])->name('main_home'); 
 
 
 
 Route::get('about-web',function(){
     return view('website.pages.about');
 })->name('about');
+
+Route::get('contact-web',function(){
+    return view('website.pages.contact');
+})->name('contact');
 
 
 
@@ -76,6 +80,10 @@ Route::resource('people', PersonController::class);
 
 use App\Http\Controllers\EventController;
 Route::resource('events', EventController::class);
+Route::get('/web_events',[ EventController::class,'index_web'])->name('web_events');
+Route::get('/web_events_single/{event}',[ EventController::class,'index_web_single'])->name('web_events_single');
+
+
 
 
 use App\Http\Controllers\EventVolunteerController;
