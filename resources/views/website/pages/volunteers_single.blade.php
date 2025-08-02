@@ -7,20 +7,14 @@
 
   @include('website.layouts.header')
 
-  
-  
-
-
-
-
-
-
-
   <div class="section_padding" style="background-color: #ffffff; padding: 100px 0;">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10">
           <div class="card" style="background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%); border: 1px solid #e0e0e0; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+            <div style="overflow: hidden; height: 300px; display: flex; align-items: center; justify-content: center; background-color: #f1f1f1;">
+              <img src="{{ $volunteer->image_url }}" alt="{{ $volunteer->person->name ?? 'متطوع' }} Image" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+            </div>
             <div class="card-header text-center" style="background: linear-gradient(90deg, #0053c0 0%, #1e90ff 100%); padding: 30px; border-bottom: 1px solid #e0e0e0;">
               <h1 style="color: #ffffff; font-size: 2.5rem; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 1px;">
                 {{ $volunteer->person->name ?? 'غير محدد' }}
@@ -67,8 +61,6 @@
                       @endforelse
                     </ul>
                   </div>
-
-                  <br>
                   <div class="collapsible-section mb-4 text-center">
                     <h4 style="color: #0053c0; margin-bottom: 10px; cursor: pointer;" onclick="this.classList.toggle('active'); var content = this.nextElementSibling; content.style.display = content.style.display === 'block' ? 'none' : 'block';">
                       المهام <span style="color: #1e90ff;">(عدد: {{ $volunteer->volunteerTasks->count() }})</span>
@@ -97,7 +89,7 @@
   </div>
 
   <script>
-    // Optional: Enhance collapsible behavior with smooth transition
+    // Enhance collapsible behavior with smooth transition
     document.querySelectorAll('.collapsible-section h4').forEach(header => {
       header.addEventListener('click', function() {
         const content = this.nextElementSibling;
@@ -110,19 +102,6 @@
       });
     });
   </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   @include('website.layouts.script')
 

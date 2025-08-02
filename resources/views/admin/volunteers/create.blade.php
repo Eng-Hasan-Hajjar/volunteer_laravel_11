@@ -1,12 +1,27 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="container  text-right">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container text-right">
     <h2>إضافة متطوع جديد</h2>
-    <form action="{{ route('volunteers.store') }}" method="POST">
+    <form action="{{ route('volunteers.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
-            <label for="id" class="form-label">الشخص</label>
+            <label for="id_person" class="form-label">الشخص</label>
             <select name="id_person" class="form-control" required>
                 <option value="">اختر الشخص</option>
                 @foreach($people as $person)
@@ -14,7 +29,16 @@
                 @endforeach
             </select>
         </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">صورة المتطوع</label>
+            <input type="file" name="image" class="form-control" accept="image/*">
+        </div>
         <button type="submit" class="btn btn-success">حفظ</button>
     </form>
 </div>
+
+
+
+
+
 @endsection

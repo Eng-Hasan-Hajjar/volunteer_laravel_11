@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage; // Import the Storage facade
 
 class Volunteer extends Model
 {
@@ -11,7 +12,7 @@ class Volunteer extends Model
 
    // protected $primaryKey = 'id_volunteer';
 
-    protected $fillable = ['id_person'];
+    protected $fillable = ['id_person', 'image'];
 
     public function person()
     {
@@ -32,4 +33,12 @@ class Volunteer extends Model
     {
         return $this->hasMany(VolunteerTask::class, 'id_volunteer', 'id_volunteer');
     }
+
+
+ public function getImageUrlAttribute()
+    {
+        return $this->image ? asset($this->image) : asset('images/default-avatar.png');
+    }
+
+
 }

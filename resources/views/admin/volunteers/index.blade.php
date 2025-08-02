@@ -7,6 +7,7 @@
     <table class="table table-bordered mt-3 text-right">
         <thead>
             <tr>
+                <th>صورة المتطوع</th>
                 <th>اسم الشخص</th>
                 <th>الإجراءات</th>
             </tr>
@@ -14,6 +15,10 @@
         <tbody>
             @foreach($volunteers as $volunteer)
                 <tr>
+                    <td>
+                        <img src="{{ $volunteer->image_url }}" alt="Volunteer Image" style="max-width: 50px; border-radius: 50%;">
+                        <p>{{ $volunteer->image_url }}</p> <!-- Optional for debugging -->
+                    </td>
                     <td>{{ $volunteer->person->name ?? 'غير متوفر' }}</td>
                     <td>
                         <a href="{{ route('volunteers.edit', $volunteer) }}" class="btn btn-warning">تعديل</a>
