@@ -151,7 +151,7 @@
 
               @if(auth()->user()->hasRole('admin'))
                         <li class="nav-item">
-                          <a href="./users" class="nav-link">
+                          <a href="{{ route('users.index') }}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>المستخدمين</p>
                           </a>
@@ -160,7 +160,7 @@
                      
                @endif
               <li class="nav-item">
-                <a  href="/" class="nav-link">
+                <a  href="{{ route('main_home') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p> الموقع</p>
                 </a>

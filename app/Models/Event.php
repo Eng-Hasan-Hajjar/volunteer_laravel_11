@@ -11,7 +11,7 @@ class Event extends Model
 
    
 
-    protected $fillable = ['event_name', 'start_day', 'end_day', 'id_coordinator'];
+    protected $fillable = ['event_name', 'start_day', 'end_day', 'id_coordinator', 'main_image'];
 
     public function coordinator()
     {
@@ -26,5 +26,9 @@ class Event extends Model
     public function volunteerTasks()
     {
         return $this->hasMany(VolunteerTask::class, 'id_event', 'id_event');
+    }
+    public function galleryImages()
+    {
+        return $this->hasMany(EventGallery::class, 'event_id', 'id');
     }
 }

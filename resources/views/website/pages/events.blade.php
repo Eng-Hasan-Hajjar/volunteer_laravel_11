@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 
 @include('website.layouts.head')
 
@@ -19,7 +19,10 @@
       <div class="row">
         @foreach($events as $event)
         <div class="col-lg-4 col-md-6 mb-4">
-          <div class="single_cause" style="background-color: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;">
+          <div class="single_cause text-center" style="background-color: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;">
+            @if ($event->main_image)
+              <img src="{{ asset($event->main_image) }}" alt="{{ $event->event_name }}" style="width: 100%; height: 200px; object-fit: cover;">
+            @endif
             <div class="causes_content text-center" style="padding: 20px;">
               <h4 style="color: #1e90ff; font-size: 1.5rem; margin-bottom: 15px;">{{ $event->event_name }}</h4>
               <p style="color: #333333;"><strong style="color: #0053c0;">التاريخ:</strong> {{ \Carbon\Carbon::parse($event->start_day)->format('d F Y') }} - {{ \Carbon\Carbon::parse($event->end_day)->format('d F Y') }}</p>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 
 @include('website.layouts.head')
 
@@ -11,7 +11,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10">
-          <div class="card" style="background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%); border: 1px solid #e0e0e0; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
+          <div class="card text-center" style="background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%); border: 1px solid #e0e0e0; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">
             <div class="card-header text-center" style="background: linear-gradient(90deg, #0053c0 0%, #1e90ff 100%); padding: 30px; border-bottom: 1px solid #e0e0e0;">
               <h1 style="color: #ffffff; font-size: 2.5rem; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 1px;">
                 {{ $event->event_name }}
@@ -19,6 +19,11 @@
             </div>
             <div class="card-body" style="padding: 40px;">
               <div class="row">
+                <div class="col-md-12 mb-4">
+                  @if ($event->main_image)
+                    <img src="{{ asset($event->main_image) }}" alt="{{ $event->event_name }}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 10px;">
+                  @endif
+                </div>
                 <div class="col-md-4 text-right" style="border-right: 1px solid #e0e0e0; padding-right: 20px;">
                   <p style="color: #333333; font-size: 1.1rem; margin-bottom: 15px;"><strong style="color: #0053c0;">المنسق:</strong> {{ $event->coordinator->name ?? 'غير محدد' }}</p>
                   <p style="color: #333333; font-size: 1.1rem; margin-bottom: 15px;"><strong style="color: #0053c0;">التاريخ:</strong> {{ \Carbon\Carbon::parse($event->start_day)->format('d F Y') }} - {{ \Carbon\Carbon::parse($event->end_day)->format('d F Y') }}</p>
@@ -52,6 +57,18 @@
                         <li style="margin-bottom: 10px;">لا توجد مهام مسجلة</li>
                       @endforelse
                     </ul>
+                  </div>
+                  <div class="collapsible-section mb-4">
+                    <h4 style="color: #0053c0; margin-bottom: 10px; cursor: pointer;" onclick="this.classList.toggle('active'); var content = this.nextElementSibling; content.style.display = content.style.display === 'block' ? 'none' : 'block';">
+                      معرض الصور <span style="color: #1e90ff;">(عدد: {{ $event->galleryImages->count() }})</span>
+                    </h4>
+                    <div style="list-style: none; padding: 0; color: #333333; text-align: right; display: block;" id="gallery-content">
+                      @forelse($event->galleryImages as $image)
+                        <img src="{{ asset($image->image_path) }}" alt="Gallery Image" style="max-width: 200px; margin: 10px; border-radius: 5px;">
+                      @empty
+                        <p style="margin-bottom: 10px;">لا توجد صور في المعرض</p>
+                      @endforelse
+                    </div>
                   </div>
                 </div>
               </div>

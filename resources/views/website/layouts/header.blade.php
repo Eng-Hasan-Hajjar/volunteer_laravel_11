@@ -1,101 +1,78 @@
 <header>
-        <div class="header-area ">
-            <div class="header-top_area">
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-xl-6 col-md-6 col-lg-6 order-2 order-md-1">
-                            <div class="short_contact_list">
-                                <ul class="d-flex justify-content-end">
-                                    <li><a href="tel:+9668001234567"><i class="fa fa-phone"></i> +966-800-123-4567</a></li>
-                                    <li><a href="mailto:info@volunteerlink.org"><i class="fa fa-envelope"></i> info@volunteerlink.org</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-md-6 col-lg-6 order-1 order-md-2">
-                            <div class="social_media_links d-flex justify-content-start">
-                                <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-pinterest-p"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-                                <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                            </div>
+    <div class="header-area">
+        <!-- Header Top Area -->
+        <div class="header-top_area bg-light py-2">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-xl-6 col-md-6 col-lg-6 order-1 order-md-2">
+                        <div class="short_contact_list d-flex justify-content-start gap-4">
+                            <ul class="list-unstyled d-flex align-items-center mb-0">
+                                <li class="ms-3"><a href="tel:+9668001234567" class="text-muted text-decoration-none d-flex align-items-center" style="transition: color 0.3s ease;"><i class="fa fa-phone ms-2"></i> +966-800-123-4567</a></li>
+                                <li><a href="mailto:info@volunteerlink.org" class="text-muted text-decoration-none d-flex align-items-center" style="transition: color 0.3s ease;"><i class="fa fa-envelope ms-2"></i> info@volunteerlink.org</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="sticky-header" class="main-header-area">
-                <div class="container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-xl-9 col-lg-9">
-                            <div class="main-menu">
-                                <nav>
-                                    <ul id="navigation">
-                                        <li><a href="{{ route(name: 'main_home') }}">الرئيسية</a></li>
-                                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('web_volunteers') }}">متطوعنا</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('web_organizations') }}"> منظماتنا</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('web_events') }}"> فعالياتنا</a>
-                                        </li>
-                                        <li><a href="{{ route('about') }}">من نحن</a></li>
-                                     
-                                        <li><a href="{{ route('contact') }}">اتصل بنا</a></li>
+        </div>
+
+        <!-- Main Header Area -->
+        <div id="sticky-header" class="main-header-area">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-xl-3 col-lg-3 order-3">
+                        <div class="logo text-right">
+                            <a href="{{ route('main_home') }}">
+                                <img src="{{ asset('website/img/logo.png') }}" alt="VolunteerLink Logo" style="max-height: 70px; transition: transform 0.3s ease;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 order-2">
+                        <div class="main-menu">
+                            <nav class="navbar navbar-expand-lg navbar-dark" style="background:#0053c0;">
+                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item"><a class="nav-link text-white" href="{{ route('main_home') }}">الرئيسية</a></li>
+                                        <li class="nav-item"><a class="nav-link text-white" href="{{ route('web_volunteers') }}">متطوعنا</a></li>
+                                        <li class="nav-item"><a class="nav-link text-white" href="{{ route('web_organizations') }}">منظماتنا</a></li>
+                                        <li class="nav-item"><a class="nav-link text-white" href="{{ route('web_events') }}">فعالياتنا</a></li>
+                                        <li class="nav-item"><a class="nav-link text-white" href="{{ route('about') }}">من نحن</a></li>
+                                        <li class="nav-item"><a class="nav-link text-white" href="{{ route('contact') }}">اتصل بنا</a></li>
                                     </ul>
-                                </nav>
-
-                                @if (Route::has('login'))
-                                <nav class="-mx-3 flex flex-1 justify-end">
-                                    @auth
-                                         <div class="Appointment">
-                                            <div class="book_btn d-none d-lg-block">
-                                                <a data-scroll-nav='1' href="{{ url('/dashboard') }}">     لوحة التحكم </a>
-                                            </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 order-1">
+                        <div class="auth-actions d-flex justify-content-start align-items-center gap-2">
+                            @if (Route::has('login'))
+                                @auth
+                                    <div class="book_btn ms-2">
+                                        <a href="{{ url('/dashboard') }}" class="btn btn-outline-light btn-sm" style="transition: background-color 0.3s ease; border-color: #fff;">لوحة التحكم</a>
+                                    </div>
+                                    <a href="{{ route('logout') }}" class="btn btn-outline-light btn-sm" style="transition: background-color 0.3s ease; border-color: #fff;"
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        {{ __('تسجيل خروج') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">@csrf</form>
+                                @else
+                                    <div class="book_btn ms-2">
+                                        <a href="{{ route('login') }}" class="btn btn-outline-light btn-sm" style="transition: background-color 0.3s ease; border-color: #fff;">تسجيل دخول</a>
+                                    </div>
+                                    @if (Route::has('register'))
+                                        <div class="book_btn">
+                                            <a href="{{ route('register') }}" class="btn btn-outline-light btn-sm" style="transition: background-color 0.3s ease; border-color: #fff;">إنشاء حساب</a>
                                         </div>
-                                  
-                                        <a href="{{ route('logout') }}" 
-                                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                            onclick="event.preventDefault(); 
-                                            document.getElementById('logout-form').submit();">
-                                            {{ __('تسجيل خروج ') }} 
-                                        </a>
-                                            <form id="logout-form" action="{{ route('logout') }}" 
-                                            method="POST" class="d-none">@csrf
-                                        </form>
-                                    @else
-
-                                            <div class="ms-auto d-flex gap-2">
-    <div class="book_btn d-none d-lg-block">
-        <a class="btn btn-outline-primary" href="{{ route('login') }}">تسجيل دخول</a>
-    </div>
-
-    @if (Route::has('register'))
-        <div class="book_btn d-none d-lg-block">
-            <a class="btn btn-outline-success" href="{{ route('register') }}">إنشاء حساب</a>
-        </div>
-    @endif
-</div>
-
-                                            @endauth
-                                        </nav>
                                     @endif
-
-
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3">
-                            <div class="logo text-left">
-                                <a href="index.html">
-                                    <img src={{asset('website/img/logo.png')}} alt="VolunteerLink Logo" style="max-height: 60px;">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="mobile_menu d-block d-lg-none"></div>
+                                @endauth
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>

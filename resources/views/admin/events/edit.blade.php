@@ -1,12 +1,9 @@
-
-
-
 @extends('admin.layouts.app')
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                    <div class="col-sm-6">
+                <div class="col-sm-6">
                     <a href="{{ route('events.index') }}" class="btn btn-default float-sm-left">
                         <i class="fas fa-arrow-right"></i> رجوع
                     </a>
@@ -14,7 +11,6 @@
                 <div class="col-sm-6">
                     <h1 class="m-0 text-right"><i class="fas fa-calendar-alt"></i> تعديل الفعالية</h1>
                 </div>
-              
             </div>
         </div>
     </section>
@@ -111,6 +107,32 @@
                                             <span class="invalid-feedback">{{ $message }}</span>
                                         @enderror
                                     </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="main_image">الصورة الرئيسية</label>
+                                    <input type="file" name="main_image" id="main_image" class="form-control text-right @error('main_image') is-invalid @enderror">
+                                    @if ($event->main_image)
+                                        <img src="{{ asset($event->main_image) }}" alt="Main Image" style="max-width: 200px; margin-top: 10px;">
+                                    @endif
+                                    @error('main_image')
+                                        <span class="invalid-feedback d-block">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="gallery_images">معرض الصور (اختياري)</label>
+                                    <input type="file" name="gallery_images[]" id="gallery_images" class="form-control text-right @error('gallery_images') is-invalid @enderror" multiple>
+                                    @if ($event->galleryImages && $event->galleryImages->count() > 0)
+                                        @foreach ($event->galleryImages as $image)
+                                            <img src="{{ asset($image->image_path) }}" alt="Gallery Image" style="max-width: 100px; margin: 10px;">
+                                        @endforeach
+                                    @else
+                                        <p style="margin-top: 10px;">لا توجد صور في المعرض</p>
+                                    @endif
+                                    @error('gallery_images')
+                                        <span class="invalid-feedback d-block">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
                                 <button type="submit" class="btn btn-success btn-block">

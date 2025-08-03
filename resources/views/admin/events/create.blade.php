@@ -34,7 +34,7 @@
                                     {{ session('error') }}
                                 </div>
                             @endif
-                            <form action="{{ route('events.store') }}" method="POST" dir="rtl">
+                            <form action="{{ route('events.store') }}" method="POST" enctype="multipart/form-data" dir="rtl">
                                 @csrf
                                 <div class="form-group text-right">
                                     <label for="event_name">اسم الفعالية</label>
@@ -75,6 +75,20 @@
                                         @endforeach
                                     </select>
                                     @error('id_coordinator')
+                                        <span class="invalid-feedback d-block">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group text-right">
+                                    <label for="main_image">الصورة الرئيسية</label>
+                                    <input type="file" name="main_image" id="main_image" class="form-control text-right @error('main_image') is-invalid @enderror">
+                                    @error('main_image')
+                                        <span class="invalid-feedback d-block">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group text-right">
+                                    <label for="gallery_images">معرض الصور (اختياري)</label>
+                                    <input type="file" name="gallery_images[]" id="gallery_images" class="form-control text-right @error('gallery_images') is-invalid @enderror" multiple>
+                                    @error('gallery_images')
                                         <span class="invalid-feedback d-block">{{ $message }}</span>
                                     @enderror
                                 </div>

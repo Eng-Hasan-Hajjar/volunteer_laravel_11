@@ -1,16 +1,33 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Event;
+use Carbon\Carbon;
 use App\Models\Volunteer;
-use App\Models\Person;
+use App\Models\Person; // Assuming Person model represents volunteers
+use App\Models\Organization; // Assuming Organization model exists
+
 use Illuminate\Http\Request;
 
 class VolunteerController extends Controller
 {
     public function index_web_main()
     { 
-        return view('website.index');
+        $events = Event::with('coordinator', 'galleryImages')
+                       ->where('start_day', '>=', Carbon::today())
+                       ->orderBy('start_day', 'asc')
+                       ->take(3) // Limit to 3 upcoming events
+                       ->get();
+
+        $volunteers = Volunteer::with('person', 'volunteerSkills', 'eventVolunteers.event')
+                           ->take(3) // Limit to 3 volunteers
+                           ->get();
+
+        $organizations = Organization::take(3) // Limit to 3 organizations
+                           ->get();
+
+
+        return view('website.index', compact('events', 'volunteers', 'organizations'));
     }
     
     public function index()

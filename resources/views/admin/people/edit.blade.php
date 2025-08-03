@@ -31,6 +31,24 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
+                                    <label for="second_name">الكنية (اختياري)</label>
+                                    <input type="text" name="second_name" id="second_name" class="form-control @error('second_name') is-invalid @enderror" value="{{ old('second_name', $person->second_name) }}">
+                                    @error('second_name')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="gender">الجنس (اختياري)</label>
+                                    <select name="gender" id="gender" class="form-control @error('gender') is-invalid @enderror">
+                                        <option value="">اختر الجنس</option>
+                                        <option value="ذكر" {{ old('gender', $person->gender) === 'ذكر' ? 'selected' : '' }}>ذكر</option>
+                                        <option value="أنثى" {{ old('gender', $person->gender) === 'أنثى' ? 'selected' : '' }}>أنثى</option>
+                                    </select>
+                                    @error('gender')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
                                     <label for="national_number">الرقم الوطني</label>
                                     <input type="text" name="national_number" id="national_number" class="form-control @error('national_number') is-invalid @enderror" value="{{ old('national_number', $person->national_number) }}" maxlength="20">
                                     @error('national_number')

@@ -20,7 +20,11 @@
     <link href="{{ asset('website/css/animate.css') }}" rel="stylesheet">
     <link href="{{ asset('website/css/slicknav.css') }}" rel="stylesheet">
     <link href="{{ asset('website/css/style.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+   
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   
     <!-- Custom RTL & Professional CSS -->
     <style>
         body {
@@ -31,6 +35,170 @@
         .counter_area, .our_volunteer_area, .news__area, .make_donation_area, .footer {
             direction: rtl;
         }
+
+
+
+
+  /* Custom Divider Styling */
+.custom-divider {
+    height: 150px; /* Adjusted height to better showcase the wave */
+    background: linear-gradient(90deg, #1e90ff, #28a745, #dc3545); /* Gradient matching section colors */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+    margin: 40px 0;
+    border: none;
+    position: relative;
+    overflow: hidden; /* Ensure wave stays within bounds */
+}
+
+/* Wave shape using clip-path with a more defined wave pattern */
+.custom-divider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit; /* Inherit the gradient */
+    clip-path: polygon(
+        0 20%, 10% 40%, 20% 10%, 30% 50%, 40% 20%, 
+        50% 60%, 60% 30%, 70% 70%, 80% 40%, 90% 80%, 
+        100% 50%, 100% 100%, 0 100%
+    ); /* Enhanced wave pattern */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Optional hover effect to enhance wave visibility */
+.custom-divider:hover::after {
+    transform: scaleY(1.1); /* Slight stretch on hover for dynamic effect */
+}
+
+/* Responsive Adjustments for Divider */
+@media (max-width: 768px) {
+    .custom-divider {
+        height: 80px; /* Reduced height for mobile */
+        margin: 30px 0;
+    }
+
+    .custom-divider::after {
+        clip-path: polygon(
+            0 30%, 20% 50%, 40% 20%, 60% 60%, 80% 30%, 
+            100% 70%, 100% 100%, 0 100%
+        ); /* Simplified wave for mobile */
+    }
+}
+
+
+
+
+
+
+/* Header Styling */
+.header-area {
+    position: relative;
+    z-index: 1000;
+}
+
+.header-top_area {
+    border-bottom: 1px solid #e9ecef;
+}
+
+.short_contact_list a {
+    font-size: 0.9rem;
+    color: #666 !important;
+}
+
+.short_contact_list a:hover {
+    color: #1e90ff !important;
+}
+
+.main-header-area {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 0;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+#sticky-header.sticky {
+    background: #ffffff;
+    box-shadow: 0 2px 10px rgba(175, 0, 0, 0.1);
+    padding: 5px 0;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+.main-menu nav .navbar-nav .nav-item .nav-link {
+    color: #1e90ff;
+    font-weight: 500;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+.main-menu nav .navbar-nav .nav-item .nav-link:hover,
+.main-menu nav .navbar-nav .nav-item .nav-link.active {
+    color: #1e90ff;
+}
+
+.auth-actions .btn {
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-size: 0.9rem;
+}
+
+.auth-actions .btn:hover {
+    background-color: #1e90ff;
+    color: #ffffff !important;
+    border-color: #1e90ff;
+}
+
+.auth-actions .btn-outline-danger:hover {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.auth-actions .btn-outline-success:hover {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    .main-header-area .col-xl-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .main-menu nav .navbar-nav {
+        padding: 15px;
+        background: #ffffff;
+        border-radius: 5px;
+        box-shadow: 0 2px 10px #007bff7a;
+    }
+
+    .auth-actions {
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .logo {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .short_contact_list ul {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .short_contact_list li {
+        margin-bottom: 5px;
+    }
+}
+
+
+
         .row {
             flex-direction: row-reverse;
         }

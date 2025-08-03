@@ -22,9 +22,11 @@ class PersonController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
+            'second_name' => 'nullable|string|max:255',
             'national_number' => 'required|string|max:20|unique:people,national_number',
             'birth_date' => 'required|date',
             'email' => 'required|email|max:255|unique:people,email',
+            'gender' => 'nullable|in:ذكر,أنثى',
         ]);
 
         Person::create($validated);
@@ -41,9 +43,11 @@ class PersonController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'national_number' => 'required|string|max:20|unique:people,' ,
+            'second_name' => 'nullable|string|max:255',
+            'national_number' => 'required|string|max:20|unique:people,national_number,' . $person->id,
             'birth_date' => 'required|date',
-            'email' => 'required|email|max:255|unique:people,' ,
+            'email' => 'required|email|max:255|unique:people,email,' . $person->id,
+            'gender' => 'nullable|in:ذكر,أنثى',
         ]);
 
         $person->update($validated);

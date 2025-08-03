@@ -12,6 +12,103 @@
   -ms-flex-pack: start;
   justify-content: start;
 }
+/* General Section Styling */
+.section_padding {
+    padding: 80px 0;
+}
+
+.section_title h3 span {
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section_title h3 span::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: currentColor;
+    transition: width 0.3s ease;
+}
+
+.section_title h3 span:hover::after {
+    width: 80px;
+}
+
+/* Event Card Styling */
+.event-card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.event-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(30, 144, 255, 0.2);
+}
+
+.event-card .btn-primary:hover {
+    background: linear-gradient(90deg, #0053c0, #1e90ff);
+}
+
+/* Volunteer Card Styling */
+.volunteer-card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.volunteer-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(40, 167, 69, 0.2);
+}
+
+.volunteer-image img {
+    transition: transform 0.3s ease;
+}
+
+.volunteer-card:hover .volunteer-image img {
+    transform: scale(1.1);
+}
+
+.volunteer-card .btn-success:hover {
+    background: linear-gradient(90deg, #218838, #28a745);
+}
+
+/* Organization Card Styling */
+.organization-card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.organization-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(220, 53, 69, 0.2);
+}
+
+.organization-card .btn-danger:hover {
+    background: linear-gradient(90deg, #c82333, #dc3545);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .event-card, .volunteer-card, .organization-card {
+        margin-bottom: 20px;
+    }
+
+    .col-lg-4, .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Placeholder Image */
+.placeholder-image {
+    border-radius: 15px 15px 0 0;
+}
+
+
 
 /* line 13, ../../Arafath/CL/january 2020/242. charity/HTML/scss/_extend.scss */
 .overlay::before {

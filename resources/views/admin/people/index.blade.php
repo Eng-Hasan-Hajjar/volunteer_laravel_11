@@ -18,11 +18,10 @@
 
     <section class="content" dir="rtl">
         <div class="container-fluid text-right">
-            <div class="row"  dir="rtl">
-                <div class="col-12 text-right"  dir="rtl">
-                    <div class="card text-right"  dir="rtl">
+            <div class="row" dir="rtl">
+                <div class="col-12 text-right" dir="rtl">
+                    <div class="card text-right" dir="rtl">
                         <div class="card-header text-right" dir="rtl">
-                           
                         </div>
                         <div class="card-body">
                             @if (session('success'))
@@ -40,6 +39,8 @@
                                     <tr>
                                         <th class="text-right">#</th>
                                         <th class="text-right">الاسم</th>
+                                        <th class="text-right">الكنية</th>
+                                        <th class="text-right">الجنس</th>
                                         <th class="text-right">الرقم الوطني</th>
                                         <th class="text-right">تاريخ الميلاد</th>
                                         <th class="text-right">البريد الإلكتروني</th>
@@ -51,6 +52,8 @@
                                         <tr>
                                             <td class="text-right">{{ $loop->iteration }}</td>
                                             <td class="text-right">{{ $person->name }}</td>
+                                            <td class="text-right">{{ $person->second_name ?? '---' }}</td>
+                                            <td class="text-right">{{ $person->gender ?? 'غير محدد' }}</td>
                                             <td class="text-right">{{ $person->national_number }}</td>
                                             <td class="text-right">{{ $person->birth_date }}</td>
                                             <td class="text-right">{{ $person->email }}</td>
@@ -69,7 +72,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="6" class="text-center">لا توجد بيانات للأشخاص</td>
+                                            <td colspan="8" class="text-center">لا توجد بيانات للأشخاص</td>
                                         </tr>
                                     @endforelse
                                 </tbody>
