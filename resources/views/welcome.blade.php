@@ -4,9 +4,6 @@
 
 <body>
     <div class="container-xxl bg-white p-0">
-        <!-- Spinner Start-->
-        @include('website.layouts.spinner')
-       <!-- Spinner End -->
 
 
         <!-- Navbar Start -->
@@ -19,39 +16,8 @@
         <!-- Header End -->
 
 
-        <!-- Search Start -->
-        @include('website.layouts.search')
-        <!-- Search End -->
 
-
-        <!-- Category Start -->
-        @include('website.layouts.category')
-        <!-- Category End -->
-
-
-        <!-- About Start -->
-        @include('website.layouts.about')
-        <!-- About End -->
-
-
-        <!-- Property List Start -->
-        @include('website.layouts.property-list')
-        <!-- Property List End -->
-
-
-        <!-- Call to Action Start -->
-        @include('website.layouts.call-action')
-        <!-- Call to Action End -->
-
-
-    
-
-
-        <!-- Testimonial Start -->
-        @include('website.layouts.testimonial')
-        <!-- Testimonial End -->
-        
-
+   
         <!-- Footer Start -->
         @include('website.layouts.footer')
         <!-- Footer End -->

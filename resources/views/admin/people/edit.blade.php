@@ -69,6 +69,49 @@
                                         <span class="invalid-feedback">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                <div class="form-group">
+                                    <label for="contact_number">رقم التواصل (اختياري)</label>
+                                    <input type="text" name="contact_number" id="contact_number" class="form-control" value="{{ old('contact_number', $person->contact_number) }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="job_title">المسمى الوظيفي (اختياري)</label>
+                                    <input type="text" name="job_title" id="job_title" class="form-control" value="{{ old('job_title', $person->job_title) }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="nationality">الجنسية (اختياري)</label>
+                                    <input type="text" name="nationality" id="nationality" class="form-control" value="{{ old('nationality', $person->nationality) }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="availability_times">أوقات التفرغ (اختياري)</label>
+                                    <textarea name="availability_times" id="availability_times" class="form-control">{{ old('availability_times', $person->availability_times) }}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="motivation">الدوافع للمشاركة (اختياري)</label>
+                                    <textarea name="motivation" id="motivation" class="form-control">{{ old('motivation', $person->motivation) }}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="is_active">نشط / غير نشط (اختياري)</label>
+                                    <select name="is_active" id="is_active" class="form-control">
+                                        <option value="1" {{ old('is_active', $person->is_active) ? 'selected' : '' }}>نشط</option>
+                                        <option value="0" {{ old('is_active', $person->is_active) === 0 ? 'selected' : '' }}>غير نشط</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="department">القسم (اختياري)</label>
+                                    <input type="text" name="department" id="department" class="form-control" value="{{ old('department', $person->department) }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="hiring_date">تاريخ التعيين (اختياري)</label>
+                                    <input type="date" name="hiring_date" id="hiring_date" class="form-control" value="{{ old('hiring_date', $person->hiring_date ?? now()->toDateString()) }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">العنوان (اختياري)</label>
+                                    <input type="text" name="address" id="address" class="form-control" value="{{ old('address', $person->address) }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="notes">ملاحظات (اختياري)</label>
+                                    <textarea name="notes" id="notes" class="form-control">{{ old('notes', $person->notes) }}</textarea>
+                                </div>
                                 <button type="submit" class="btn btn-primary">تحديث</button>
                             </form>
                         </div>

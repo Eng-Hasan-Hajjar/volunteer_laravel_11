@@ -7,7 +7,7 @@
 
   @include('website.layouts.header')
 
-  <div class="section_padding" style="background-color: #ffffff; padding: 100px 0;">
+  <div class="section_padding" style="background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%); padding: 100px 0;">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10">
@@ -24,10 +24,34 @@
               <div class="row">
                 <div class="col-md-4 text-right" style="border-right: 1px solid #e0e0e0; padding-right: 20px;">
                   <p style="color: #333333; font-size: 1.1rem; margin-bottom: 15px;"><strong style="color: #0053c0;">البريد الإلكتروني:</strong> {{ $volunteer->person->email ?? 'غير محدد' }}</p>
+                  <p style="color: #333333; font-size: 1.1rem; margin-bottom: 15px;"><strong style="color: #0053c0;">رقم التواصل:</strong> {{ $volunteer->person->contact_number ?? 'غير محدد' }}</p>
                   <p style="color: #333333; font-size: 1.1rem; margin-bottom: 15px;"><strong style="color: #0053c0;">الرقم القومي:</strong> {{ $volunteer->person->national_number ?? 'غير محدد' }}</p>
-                  <p style="color: #333333; font-size: 1.1rem;"><strong style="color: #0053c0;">تاريخ الميلاد:</strong> {{ \Carbon\Carbon::parse($volunteer->person->birth_date)->format('d F Y') ?? 'غير محدد' }}</p>
+                  <p style="color: #333333; font-size: 1.1rem; margin-bottom: 15px;"><strong style="color: #0053c0;">تاريخ الميلاد:</strong> {{ \Carbon\Carbon::parse($volunteer->person->birth_date)->format('d F Y') ?? 'غير محدد' }}</p>
+                  <p style="color: #333333; font-size: 1.1rem; margin-bottom: 15px;"><strong style="color: #0053c0;">المسمى الوظيفي:</strong> {{ $volunteer->person->job_title ?? 'غير محدد' }}</p>
+                  <p style="color: #333333; font-size: 1.1rem; margin-bottom: 15px;"><strong style="color: #0053c0;">الجنسية:</strong> {{ $volunteer->person->nationality ?? 'غير محدد' }}</p>
+                  <p style="color: #333333; font-size: 1.1rem; margin-bottom: 15px;"><strong style="color: #0053c0;">القسم:</strong> {{ $volunteer->person->department ?? 'غير محدد' }}</p>
+                  <p style="color: #333333; font-size: 1.1rem; margin-bottom: 15px;"><strong style="color: #0053c0;">تاريخ التعيين:</strong> {{ \Carbon\Carbon::parse($volunteer->person->hiring_date)->format('d F Y') ?? 'غير محدد' }}</p>
+                  <p style="color: #333333; font-size: 1.1rem; margin-bottom: 15px;"><strong style="color: #0053c0;">العنوان:</strong> {{ $volunteer->person->address ?? 'غير محدد' }}</p>
+                  <p style="color: #333333; font-size: 1.1rem; margin-bottom: 15px;"><strong style="color: #0053c0;">ملاحظات:</strong> {{ $volunteer->person->notes ?? 'غير محدد' }}</p>
+                  <p style="color: #333333; font-size: 1.1rem;"><strong style="color: #0053c0;">نشط / غير نشط:</strong> {{ $volunteer->person->is_active ? 'نشط' : 'غير نشط' }}</p>
                 </div>
                 <div class="col-md-8">
+                  <div class="collapsible-section mb-4 text-center">
+                    <h4 style="color: #0053c0; margin-bottom: 10px; cursor: pointer;" onclick="this.classList.toggle('active'); var content = this.nextElementSibling; content.style.display = content.style.display === 'block' ? 'none' : 'block';">
+                      أوقات التفرغ <span style="color: #1e90ff;">(تفاصيل)</span>
+                    </h4>
+                    <p style="color: #333333; text-align: right; display: block; padding: 0 15px;" id="availability-content">
+                      {{ $volunteer->person->availability_times ?? 'غير محدد' }}
+                    </p>
+                  </div>
+                  <div class="collapsible-section mb-4 text-center">
+                    <h4 style="color: #0053c0; margin-bottom: 10px; cursor: pointer;" onclick="this.classList.toggle('active'); var content = this.nextElementSibling; content.style.display = content.style.display === 'block' ? 'none' : 'block';">
+                      الدوافع للمشاركة <span style="color: #1e90ff;">(تفاصيل)</span>
+                    </h4>
+                    <p style="color: #333333; text-align: right; display: block; padding: 0 15px;" id="motivation-content">
+                      {{ $volunteer->person->motivation ?? 'غير محدد' }}
+                    </p>
+                  </div>
                   <div class="collapsible-section mb-4 text-center">
                     <h4 style="color: #0053c0; margin-bottom: 10px; cursor: pointer;" onclick="this.classList.toggle('active'); var content = this.nextElementSibling; content.style.display = content.style.display === 'block' ? 'none' : 'block';">
                       المهارات <span style="color: #1e90ff;">(عدد: {{ $volunteer->volunteerSkills->count() }})</span>
@@ -89,7 +113,7 @@
   </div>
 
   <script>
-    // Enhance collapsible behavior with smooth transition
+    // تحسين السلوك القابل للطي مع انتقال سلس
     document.querySelectorAll('.collapsible-section h4').forEach(header => {
       header.addEventListener('click', function() {
         const content = this.nextElementSibling;
@@ -99,6 +123,7 @@
         } else {
           content.style.maxHeight = content.scrollHeight + 'px';
         }
+        content.style.transition = 'max-height 0.3s ease';
       });
     });
   </script>

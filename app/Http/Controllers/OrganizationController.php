@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Organization;
 
+use App\Models\Organization;
 use Illuminate\Http\Request;
 
 class OrganizationController extends Controller
@@ -10,9 +10,18 @@ class OrganizationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-               $organizations = Organization::get();
+        $query = Organization::query();
+
+        // Search by organization name with case-insensitive matching
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->where('organization_name', 'LIKE', "%{$search}%");
+        }
+
+        $organizations = $query->get();
+
         return view('admin.organizations.index', compact('organizations'));
     }
 
@@ -21,7 +30,7 @@ class OrganizationController extends Controller
      */
     public function create()
     {
-         return view('admin.organizations.create');
+        return view('admin.organizations.create');
     }
 
     /**
@@ -29,8 +38,7 @@ class OrganizationController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $validated =      $request->validate([
+        $validated = $request->validate([
             'organization_name' => 'required|string|max:255|unique:organizations,organization_name',
             'address' => 'required|string|max:255',
             'time_of_creation' => 'required|date',
@@ -42,9 +50,6 @@ class OrganizationController extends Controller
         } catch (\Illuminate\Database\QueryException $e) {
             return redirect()->back()->with('error', 'حدث خطأ أثناء إنشاء المنظمة: ' . $e->getMessage())->withInput();
         }
-    
-
-  
     }
 
     /**
@@ -59,7 +64,7 @@ class OrganizationController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Organization $organization)
-    {  
+    {
         return view('admin.organizations.edit', compact('organization'));
     }
 
@@ -69,7 +74,7 @@ class OrganizationController extends Controller
     public function update(Request $request, Organization $organization)
     {
         $request->validate([
-              'organization_name' => 'required|string|max:255|unique:organizations,organization_name',
+            'organization_name' => 'required|string|max:255|unique:organizations,organization_name,' . $organization->id,
             'address' => 'required|string|max:255',
             'time_of_creation' => 'required|date',
         ]);
@@ -77,7 +82,6 @@ class OrganizationController extends Controller
         $organization->update($request->all());
 
         return redirect()->route('organizations.index')->with('success', 'تم تحديث المنظمة بنجاح.');
-  
     }
 
     /**
@@ -85,26 +89,21 @@ class OrganizationController extends Controller
      */
     public function destroy(Organization $organization)
     {
-                $organization->delete();
-        return redirect()->route('events.index')->with('success', 'تم حذف المنظمة بنجاح.');
-
+        $organization->delete();
+        return redirect()->route('organizations.index')->with('success', 'تم حذف المنظمة بنجاح.');
     }
-
 
     public function index_web(Organization $organization)
     {
         $organizations = Organization::get();
         return view('website.pages.organizations', compact('organizations'));
     }
+
     public function index_web_single(Organization $organization)
     {
-
-        // Remove dd() for production, it's only for debugging
-        // dd($organization);
         if (!$organization->exists) {
             abort(404); // Return 404 if organization not found
         }
-   // dd($organization);
         return view('website.pages.organizations-single', compact('organization'));
     }
 }

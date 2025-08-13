@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 
 @include('website.layouts.head')
 
@@ -19,9 +19,14 @@
       <div class="row">
         @foreach($events as $event)
         <div class="col-lg-4 col-md-6 mb-4">
-          <div class="single_cause text-center" style="background-color: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;">
+          <div class="single_cause" style="background-color: #f9f9f9; border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;">
+        
             @if ($event->main_image)
-              <img src="{{ asset($event->main_image) }}" alt="{{ $event->event_name }}" style="width: 100%; height: 200px; object-fit: cover;">
+              <img src="{{ asset($event->main_image) }}" alt="{{ $event->event_name }}"  style="height: 250px; background: #e9ecef; display: flex; align-items: center; justify-content: center; color: #adb5bd;" class="w-100 h-250px object-fit-cover">
+            @else
+              <div class="placeholder-image" style="height: 250px; background: #e9ecef; display: flex; align-items: center; justify-content: center; color: #adb5bd;">
+                <i class="fas fa-calendar-alt fa-3x"></i>
+              </div>
             @endif
             <div class="causes_content text-center" style="padding: 20px;">
               <h4 style="color: #1e90ff; font-size: 1.5rem; margin-bottom: 15px;">{{ $event->event_name }}</h4>

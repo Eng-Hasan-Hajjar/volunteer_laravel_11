@@ -9,9 +9,22 @@ use Illuminate\Http\Request;
 
 class EventVolunteerController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $eventVolunteers = EventVolunteer::with('event', 'volunteer')->get();
+        $query = EventVolunteer::with('event', 'volunteer.person');
+
+        // Search by event name or volunteer name with case-insensitive matching
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->whereHas('event', function ($q) use ($search) {
+                $q->whereRaw('LOWER(event_name) LIKE ?', [strtolower("%{$search}%")]);
+            })->orWhereHas('volunteer.person', function ($q) use ($search) {
+                $q->whereRaw('LOWER(name) LIKE ?', [strtolower("%{$search}%")]);
+            });
+        }
+
+        $eventVolunteers = $query->get();
+
         return view('admin.event_volunteers.index', compact('eventVolunteers'));
     }
 

@@ -4,15 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\Person;
-use App\Models\EventGallery; // Ensure this is imported
+use App\Models\EventGallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class EventController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $events = Event::all();
+        $query = Event::with('coordinator');
+
+        // Search by event name or coordinator name with case-insensitive matching
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->where('event_name', 'LIKE', "%{$search}%")
+                  ->orWhereHas('coordinator', function ($q) use ($search) {
+                      $q->whereRaw('LOWER(name) LIKE ?', [strtolower("%{$search}%")]);
+                  });
+        }
+
+        $events = $query->get();
+
         return view('admin.events.index', compact('events'));
     }
 

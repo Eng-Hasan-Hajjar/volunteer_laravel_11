@@ -7,9 +7,23 @@ use Illuminate\Http\Request;
 
 class PersonController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $people = Person::all();
+        $query = Person::query();
+
+        // Search by name or national number with case-insensitive matching
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->whereRaw('LOWER(name) LIKE ?', [strtolower("%{$search}%")])
+                  ->orWhere('national_number', 'LIKE', "%{$search}%")
+                  ->orWhere('email', 'LIKE', "%{$search}%")
+                  ->orWhere('contact_number', 'LIKE', "%{$search}%");
+            });
+        }
+
+        $people = $query->get();
+
         return view('admin.people.index', compact('people'));
     }
 
@@ -27,6 +41,22 @@ class PersonController extends Controller
             'birth_date' => 'required|date',
             'email' => 'required|email|max:255|unique:people,email',
             'gender' => 'nullable|in:ذكر,أنثى',
+            'contact_number' => 'nullable|string|max:20',
+            'job_title' => 'nullable|string|max:100',
+            'nationality' => 'nullable|string|max:100',
+            'availability_times' => 'nullable|string',
+            'motivation' => 'nullable|string',
+            'is_active' => 'nullable|boolean',
+            'department' => 'nullable|string|max:100',
+            'hiring_date' => 'nullable|date',
+            'address' => 'nullable|string|max:255',
+            'notes' => 'nullable|string',
+        ]);
+
+        // Set default values if not provided
+        $validated = array_merge($validated, [
+            'is_active' => $request->input('is_active', true),
+            'hiring_date' => $request->input('hiring_date', now()->toDateString()),
         ]);
 
         Person::create($validated);
@@ -48,6 +78,22 @@ class PersonController extends Controller
             'birth_date' => 'required|date',
             'email' => 'required|email|max:255|unique:people,email,' . $person->id,
             'gender' => 'nullable|in:ذكر,أنثى',
+            'contact_number' => 'nullable|string|max:20',
+            'job_title' => 'nullable|string|max:100',
+            'nationality' => 'nullable|string|max:100',
+            'availability_times' => 'nullable|string',
+            'motivation' => 'nullable|string',
+            'is_active' => 'nullable|boolean',
+            'department' => 'nullable|string|max:100',
+            'hiring_date' => 'nullable|date',
+            'address' => 'nullable|string|max:255',
+            'notes' => 'nullable|string',
+        ]);
+
+        // Set default values if not provided
+        $validated = array_merge($validated, [
+            'is_active' => $request->input('is_active', $person->is_active ?? true),
+            'hiring_date' => $request->input('hiring_date', $person->hiring_date ?? now()->toDateString()),
         ]);
 
         $person->update($validated);

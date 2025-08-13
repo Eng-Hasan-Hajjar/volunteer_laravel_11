@@ -8,9 +8,20 @@ use Illuminate\Http\Request;
 
 class EmployedAvailableResourceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $resources = EmployedAvailableResource::with('coordinator')->get();
+        $query = EmployedAvailableResource::with('coordinator');
+
+        // Search by coordinator name or resource type with case-insensitive matching
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->whereHas('coordinator', function ($q) use ($search) {
+                $q->whereRaw('LOWER(name) LIKE ?', [strtolower("%{$search}%")]);
+            })->orWhere('type_resources', 'LIKE', "%{$search}%");
+        }
+
+        $resources = $query->get();
+
         return view('admin.employed_available_resources.index', compact('resources'));
     }
 

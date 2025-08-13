@@ -50,7 +50,14 @@ class DatabaseSeeder extends Seeder
             'حملة تنظيف حدائق دمشق', 'مهرجان الثقافة السورية في حلب', 'يوم التطوع لإعادة الإعمار', 'ندوة الشباب في حمص'
         ];
 
-    // Seed People
+
+
+
+        $names = ['محمد', 'أحمد', 'علي', 'فاطمة', 'خديجة', 'عائشة'];
+        $nationalities = ['سورية', 'لبنانية', 'مصرية', 'أردنية'];
+        $departments = ['الإدارة', 'التسويق', 'التنظيم', 'الدعم اللوجستي'];
+        $jobTitles = ['مدير مشروع', 'منسق فعاليات', 'متطوع', 'محاسب'];
+
         $people = [];
         foreach (range(1, 10) as $index) {
             $name = $names[array_rand($names)];
@@ -63,11 +70,22 @@ class DatabaseSeeder extends Seeder
                 'national_number' => 'SY' . str_pad(mt_rand(1000000, 9999999), 7, '0', STR_PAD_LEFT),
                 'birth_date' => Carbon::now()->subYears(mt_rand(20, 50))->toDateString(),
                 'email' => Str::slug($name) . mt_rand(1, 100) . '@example.com',
+                'contact_number' => '+963' . mt_rand(900000000, 999999999), // Example Syrian number
+                'job_title' => $jobTitles[array_rand($jobTitles)],
+                'nationality' => $nationalities[array_rand($nationalities)],
+                'availability_times' => '9:00 ص - 3:00 م، يوميًا', // Example availability
+                'motivation' => 'الرغبة في مساعدة المجتمع', // Example motivation
+                'is_active' => (bool)rand(0, 1), // Random true/false
+                'department' => $departments[array_rand($departments)],
+                'hiring_date' => Carbon::now()->subDays(mt_rand(0, 365))->toDateString(), // Random date in the past year
+                'address' => 'دمشق، سوريا', // Example address
+                'notes' => 'متعاون ونشط', // Example notes
                 'created_at' => now(),
                 'updated_at' => now(),
             ];
         }
-        DB::table('people')->insert($people);
+        \DB::table('people')->insert($people);
+
 
         // Seed Organizations
         $organizationsData = [];

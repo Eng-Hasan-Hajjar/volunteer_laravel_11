@@ -2,32 +2,40 @@
 
 namespace App\Http\Controllers;
 
-
-
 use App\Models\FinancialSupport;
 use App\Models\Organization;
 use Illuminate\Http\Request;
 
 class FinancialSupportController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $financialSupports = FinancialSupport::with('organization')->get();
+        $query = FinancialSupport::with('organization');
+
+        // Search by organization name or support type with case-insensitive matching
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->whereHas('organization', function ($q) use ($search) {
+                $q->whereRaw('LOWER(organization_name) LIKE ?', [strtolower("%{$search}%")]);
+            })->orWhere('type_support', 'LIKE', "%{$search}%");
+        }
+
+        $financialSupports = $query->get();
+
         return view('admin.financial_supports.index', compact('financialSupports'));
     }
 
     public function create()
     {
-          $organizations = Organization::all();
+        $organizations = Organization::all();
         $financialSupport = FinancialSupport::all();
-        return view('admin.financial_supports.create', compact('financialSupport','organizations'));
+        return view('admin.financial_supports.create', compact('financialSupport', 'organizations'));
     }
 
     public function store(Request $request)
     {
-
-           $validated =      $request->validate([
-           'id_organization' => 'required|exists:organizations,id',
+        $validated = $request->validate([
+            'id_organization' => 'required|exists:organizations,id',
             'type_support' => 'required|string|max:255',
             'funding_value' => 'required|numeric|min:0',
         ]);
@@ -38,8 +46,6 @@ class FinancialSupportController extends Controller
         } catch (\Illuminate\Database\QueryException $e) {
             return redirect()->back()->with('error', 'حدث خطأ أثناء إنشاء الدعم المالي: ' . $e->getMessage())->withInput();
         }
-    
-
     }
 
     public function edit(FinancialSupport $financialSupport)
@@ -50,8 +56,8 @@ class FinancialSupportController extends Controller
 
     public function update(Request $request, FinancialSupport $financialSupport)
     {
-           $request->validate([
-           'id_organization' => 'required|exists:organizations,id',
+        $request->validate([
+            'id_organization' => 'required|exists:organizations,id',
             'type_support' => 'required|string|max:255',
             'funding_value' => 'required|numeric|min:0',
         ]);
@@ -59,7 +65,6 @@ class FinancialSupportController extends Controller
         $financialSupport->update($request->all());
 
         return redirect()->route('financial-supports.index')->with('success', 'تم تحديث الدعم المالي بنجاح.');
-  
     }
 
     public function destroy(FinancialSupport $financialSupport)

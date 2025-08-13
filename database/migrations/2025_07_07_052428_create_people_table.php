@@ -20,6 +20,20 @@ return new class extends Migration
             $table->date('birth_date');
             $table->string('email', 255)->unique();
            
+
+            $table->string('contact_number', 20)->nullable(); // New: Contact Number
+            $table->string('job_title', 100)->nullable(); // New: Job Title
+            $table->string('nationality', 100)->nullable(); // New: Nationality
+            $table->text('availability_times')->nullable(); // New: Availability Times
+            $table->text('motivation')->nullable(); // New: Motivation for Participation
+            $table->boolean('is_active')->default(true); // New: Active / Inactive (default: true)
+            $table->string('department', 100)->nullable(); // New: Department
+            $table->date('hiring_date')->nullable(); // New: Hiring Date
+            $table->string('address', 255)->nullable(); // Additional: Address
+            $table->text('notes')->nullable(); // Additional: Notes
+
+
+            
             $table->timestamps();
         });
     }

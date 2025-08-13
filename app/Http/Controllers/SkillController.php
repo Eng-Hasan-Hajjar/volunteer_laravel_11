@@ -1,15 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Skill;
 
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class SkillController extends Controller
 {
-     public function index()
+    public function index(Request $request)
     {
-        $skills = Skill::get();
+        $query = Skill::query();
+
+        // Search by skill name with case-insensitive matching
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->where('skill_name', 'LIKE', "%{$search}%");
+        }
+
+        $skills = $query->get();
+
         return view('admin.skills.index', compact('skills'));
     }
 
