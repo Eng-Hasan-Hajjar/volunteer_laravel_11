@@ -1,5 +1,6 @@
 @extends('admin.layouts.app')
 @section('content')
+<div class="content-wrapper" dir="rtl" style="text-align: right">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -90,6 +91,9 @@
                                 <button type="submit" class="btn btn-success btn-block text-right">
                                     <i class="fas fa-save"></i> تحديث
                                 </button>
+                                 <div class="col-sm-6" style="float:left ; margin: 10px;">
+                <a href="{{ route('event-volunteers.index') }}" class="btn btn-outline-secondary float-left">رجوع</a>
+            </div>
                             </form>
                         </div>
                         <div class="card-footer bg-light text-muted text-center">

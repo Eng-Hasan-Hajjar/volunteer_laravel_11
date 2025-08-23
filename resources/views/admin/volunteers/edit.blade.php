@@ -1,7 +1,11 @@
 @extends('admin.layouts.app')
 
 @section('content')
+<div class="content-wrapper" dir="rtl" style="text-align: right">
 <div class="container">
+        <div class="col-sm-6" style="float:left ; margin: 10px;">
+                <a href="{{ route('volunteers.index') }}" class="btn btn-outline-secondary float-left">رجوع</a>
+            </div>
     <h2>تعديل المتطوع</h2>
     <form action="{{ route('volunteers.update', $volunteer) }}" method="POST" enctype="multipart/form-data">
         @csrf

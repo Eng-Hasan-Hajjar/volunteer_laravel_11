@@ -1,7 +1,11 @@
 @extends('admin.layouts.app')
 
 @section('content')
+<div class="content-wrapper" dir="rtl" style="text-align: right">
 <div class="container  text-right">
+        <div class="col-sm-6" style="float:left ; margin: 10px;">
+                <a href="{{ route('skills.index') }}" class="btn btn-outline-secondary float-left">رجوع</a>
+            </div>
     <h2>إضافة مهارة جديدة</h2>
     <form action="{{ route('skills.store') }}" method="POST">
         @csrf

@@ -20,24 +20,42 @@
 </style>
 
 <div class="content-wrapper" dir="rtl">
-    <!-- Content Header (Page header) -->
+    
+        <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2 align-items-center">
+            <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">إدارة الأشخاص</h1>
                 </div>
-                <div class="col-sm-6 text-left">
-                    <a href="{{ route('people.create') }}" class="btn btn-primary btn-sm">
+                <div class="col-sm-6">
+                    <div class="float-left">
+                    <a href="{{ route('people.create') }}" class="btn btn-primary ">
                         <i class="fas fa-plus mr-1"></i> إضافة شخص جديد
                     </a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </div><!-- /.container-fluid -->
     </section>
 
     <!-- Main content -->
     <section class="content">
+         <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">إدارة الأشخاص</h1>
+                </div>
+                <div class="col-sm-6">
+                    <div class="float-left">
+                    <a href="{{ route('people.create') }}" class="btn btn-primary ">
+                        <i class="fas fa-plus mr-1"></i> إضافة شخص جديد
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+        
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">

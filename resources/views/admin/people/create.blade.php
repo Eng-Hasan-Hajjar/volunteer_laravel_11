@@ -1,6 +1,8 @@
 @extends('admin.layouts.app')
 
 @section('content')
+
+<div class="content-wrapper" dir="rtl" style="text-align: right">
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
@@ -156,4 +158,7 @@
         }
     }
 </style>
+
+
+</div>
 @endsection

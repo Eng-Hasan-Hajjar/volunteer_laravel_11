@@ -1,7 +1,11 @@
 @extends('admin.layouts.app')
 
 @section('content')
+<div class="content-wrapper" dir="rtl" style="text-align: right">
 <div class="container" dir="rtl">
+     <div class="col-sm-6" style="float:left ; margin: 10px;">
+                <a href="{{ route('financial-supports.index') }}" class="btn btn-outline-secondary float-left">رجوع</a>
+            </div>
     <h2 class="text-right">إضافة داعم مالي جديد</h2>
     <form action="{{ route('financial-supports.store') }}" method="POST">
         @csrf

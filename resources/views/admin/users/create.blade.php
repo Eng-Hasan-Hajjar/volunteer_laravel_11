@@ -1,6 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
+<div class="content-wrapper" dir="rtl" style="text-align: right">
 <div class="container  text-right">
     <div class="row justify-content-center">
         <div class="col-md-8">

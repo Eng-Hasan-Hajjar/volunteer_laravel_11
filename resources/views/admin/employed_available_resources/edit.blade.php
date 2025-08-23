@@ -1,7 +1,11 @@
 @extends('admin.layouts.app')
 
 @section('content')
+<div class="content-wrapper" dir="rtl" style="text-align: right">
 <div class="container">
+      <div class="col-sm-6" style="float:left ; margin: 10px;">
+                <a href="{{ route('employed-available-resources.index') }}" class="btn btn-outline-secondary float-left">رجوع</a>
+            </div>
     <h2>تعديل المورد</h2>
     <form action="{{ route('employed-available-resources.update', $employedAvailableResource) }}" method="POST">
         @csrf
@@ -26,6 +30,9 @@
             <input type="number" name="price_resources" class="form-control" value="{{ $employedAvailableResource->price_resources }}" step="0.01" required>
         </div>
         <button type="submit" class="btn btn-success">تحديث</button>
+          <div class="col-sm-6" style="float:left ; margin: 10px;">
+                <a href="{{ route('employed-available-resources.index') }}" class="btn btn-outline-secondary float-left">رجوع</a>
+            </div>
     </form>
 </div>
 @endsection

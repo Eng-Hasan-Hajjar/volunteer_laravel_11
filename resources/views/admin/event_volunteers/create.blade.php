@@ -1,7 +1,11 @@
 @extends('admin.layouts.app')
 
 @section('content')
+<div class="content-wrapper" dir="rtl" style="text-align: right">
 <div class="container" dir="rtl">
+      <div class="col-sm-6" style="float:left ; margin: 10px;">
+                <a href="{{ route('event-volunteers.index') }}" class="btn btn-outline-secondary float-left">رجوع</a>
+            </div>
     <h2 class="text-right">إضافة مشاركة متطوع جديدة</h2>
     <form action="{{ route('event-volunteers.store') }}" method="POST">
         @csrf
@@ -24,6 +28,9 @@
             </select>
         </div>
         <button type="submit" class="btn btn-success float-right">حفظ</button>
+          <div class="col-sm-6" style="float:left ; margin: 10px;">
+                <a href="{{ route('event-volunteers.index') }}" class="btn btn-outline-secondary float-left">رجوع</a>
+            </div>
     </form>
 </div>
 @endsection

@@ -40,7 +40,7 @@
                 <div class="col-12">
                     <div class="card card-primary card-outline">
                         <div class="card-header" dir="rtl">
-                            <h3 class="card-title">قائمة المتطوعين</h3>
+                        
                             <div class="card-tools">
                                 <form action="{{ route('volunteers.index') }}" method="GET" class="filter-form">
                                     <div class="row">

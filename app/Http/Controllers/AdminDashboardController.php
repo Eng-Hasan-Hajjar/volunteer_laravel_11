@@ -15,7 +15,7 @@ class AdminDashboardController extends Controller
 {
     public function dashboard()
     {
-      $totalUsers = User::count();
+        $totalUsers = User::count();
         $totalVolunteers = Volunteer::count();
         $totalEventVolunteers = EventVolunteer::count();
         $totalVolunteerTasks = VolunteerTask::count();
@@ -27,7 +27,7 @@ class AdminDashboardController extends Controller
 
         // إحصائيات جديدة
         $activeEvents = Event::where('end_day', '>=', Carbon::now())->count(); // الفعاليات النشطة
-      //  $totalVolunteerHours = VolunteerTask::sum('hours'); // إجمالي الساعات (افتراض وجود عمود hours)
+        //  $totalVolunteerHours = VolunteerTask::sum('hours'); // إجمالي الساعات (افتراض وجود عمود hours)
         $totalParticipants = EventVolunteer::count();
         $participationRate = ($totalVolunteers > 0) ? ($totalParticipants / $totalVolunteers) * 100 : 0;
 
