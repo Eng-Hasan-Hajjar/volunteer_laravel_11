@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="{{asset('admin/dist/css/adminlte.min.css')}}">
 
 </head>
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition light-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
 
   <!-- Preloader -->
@@ -31,7 +31,7 @@
   @include('admin.layouts.side-nav');
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="">
 
    @yield('content')
    
@@ -39,7 +39,7 @@
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
+  <aside class="control-sidebar control-sidebar-light">
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->

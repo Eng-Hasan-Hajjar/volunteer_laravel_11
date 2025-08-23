@@ -39,7 +39,36 @@ class VolunteerController extends Controller
             $query->whereHas('person', function ($q) use ($search) {
                 $q->whereRaw('LOWER(name) LIKE ?', [strtolower("%{$search}%")])
                   ->orWhere('national_number', 'LIKE', "%{$search}%");
-            })->orWhere('id', 'LIKE', "%{$search}%"); // Fallback to volunteer ID
+            })->orWhere('id', 'LIKE', "%{$search}%");
+        }
+
+        // Filter by nationality
+        if ($request->has('nationality') && $request->nationality != '') {
+            $query->whereHas('person', function ($q) use ($request) {
+                $q->where('nationality', $request->nationality);
+            });
+        }
+
+        // Filter by job title
+        if ($request->has('job_title') && $request->job_title != '') {
+            $query->whereHas('person', function ($q) use ($request) {
+                $q->where('job_title', $request->job_title);
+            });
+        }
+
+        // Filter by department
+        if ($request->has('department') && $request->department != '') {
+            $query->whereHas('person', function ($q) use ($request) {
+                $q->where('department', $request->department);
+            });
+        }
+
+        // Filter by availability times
+        if ($request->has('availability_times') && $request->availability_times != '') {
+            $availability = $request->availability_times;
+            $query->whereHas('person', function ($q) use ($availability) {
+                $q->where('availability_times', 'LIKE', "%{$availability}%");
+            });
         }
 
         $volunteers = $query->get();
@@ -119,7 +148,7 @@ class VolunteerController extends Controller
             $query->whereHas('person', function ($q) use ($search) {
                 $q->whereRaw('LOWER(name) LIKE ?', [strtolower("%{$search}%")])
                   ->orWhere('national_number', 'LIKE', "%{$search}%");
-            })->orWhere('id', 'LIKE', "%{$search}%"); // Fallback to volunteer ID
+            })->orWhere('id', 'LIKE', "%{$search}%");
         }
 
         // Filter by minimum experience period (in months)

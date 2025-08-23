@@ -22,6 +22,7 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
+        
         <div class="flex items-center justify-start mt-3" style="margin: 20px ; text-align: center;float:left" dir="auto">
             <x-primary-button class="me-3" style="margin: 5px">
                 <a href="{{ route('main_home') }}">الموقع</a>

@@ -23,6 +23,21 @@ class VolunteerSkillController extends Controller
             });
         }
 
+        // Filter by volunteer
+        if ($request->has('id_volunteer') && $request->id_volunteer != '') {
+            $query->where('id_volunteer', $request->id_volunteer);
+        }
+
+        // Filter by skill
+        if ($request->has('id_skills') && $request->id_skills != '') {
+            $query->where('id_skills', $request->id_skills);
+        }
+
+        // Filter by experience period
+        if ($request->has('experience_period') && $request->experience_period != '' && is_numeric($request->experience_period)) {
+            $query->where('experience_period', '>=', (int)$request->experience_period);
+        }
+
         $volunteerSkills = $query->get();
 
         return view('admin.volunteer_skills.index', compact('volunteerSkills'));

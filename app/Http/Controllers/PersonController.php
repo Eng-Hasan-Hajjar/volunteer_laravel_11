@@ -11,7 +11,7 @@ class PersonController extends Controller
     {
         $query = Person::query();
 
-        // Search by name or national number with case-insensitive matching
+        // Search by name, national number, email, or contact number with case-insensitive matching
         if ($request->has('search') && $request->search != '') {
             $search = $request->search;
             $query->where(function ($q) use ($search) {
@@ -20,6 +20,27 @@ class PersonController extends Controller
                   ->orWhere('email', 'LIKE', "%{$search}%")
                   ->orWhere('contact_number', 'LIKE', "%{$search}%");
             });
+        }
+
+        // Filter by nationality
+        if ($request->has('nationality') && $request->nationality != '') {
+            $query->where('nationality', $request->nationality);
+        }
+
+        // Filter by job title
+        if ($request->has('job_title') && $request->job_title != '') {
+            $query->where('job_title', $request->job_title);
+        }
+
+        // Filter by department
+        if ($request->has('department') && $request->department != '') {
+            $query->where('department', $request->department);
+        }
+
+        // Filter by availability times
+        if ($request->has('availability_times') && $request->availability_times != '') {
+            $availability = $request->availability_times;
+            $query->where('availability_times', 'LIKE', "%{$availability}%");
         }
 
         $people = $query->get();
