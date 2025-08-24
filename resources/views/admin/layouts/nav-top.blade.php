@@ -1,5 +1,5 @@
 @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('manager'))
-    <nav class="main-header navbar navbar-expand navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-dark">
 @else
     <nav class="main-header navbar navbar-expand navbar-light">
 @endif

@@ -1,5 +1,5 @@
 @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('manager'))
-    <aside class="main-sidebar sidebar-light-primary elevation-4">
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
 @else
     <aside class="main-sidebar sidebar-light-primary elevation-4">
 @endif

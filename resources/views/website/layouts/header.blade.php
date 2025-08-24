@@ -20,14 +20,14 @@
         <div id="sticky-header" class="main-header-area">
             <div class="container-fluid">
                 <div class="row align-items-center">
-                    <div class="col-xl-3 col-lg-3 order-3">
+                    <div class="col-xl-2 col-lg-2 order-3">
                         <div class="logo text-right">
                             <a href="{{ route('main_home') }}">
                                 <img src="{{ asset('website/img/logo.png') }}" alt="VolunteerLink Logo" style="max-height: 70px; transition: transform 0.3s ease;">
                             </a>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-lg-6 order-2">
+                    <div class="col-xl-7 col-lg-7 order-2">
                         <div class="main-menu">
                             <nav class="navbar navbar-expand-lg navbar-dark" style="background:#0053c0;">
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

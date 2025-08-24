@@ -82,8 +82,7 @@
         </div>
     </div>
  
-<!-- Divider between Events and Volunteers -->
-<div class="custom-divider"></div>
+
 
     <!-- our_volunteers_area_start -->
     <div class="our_volunteers_area section_padding" style="background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);">
@@ -122,8 +121,7 @@
         </div>
     </div>
     <!-- our_volunteers_area_end -->
-<!-- Divider between Volunteers and Organizations -->
-<div class="custom-divider"></div>
+
    <!-- our_organizations_area_start -->
     <div class="our_organizations_area section_padding" style="background: linear-gradient(135deg, #546c8f 0%, #ffffff 100%);">
         <div class="container">
