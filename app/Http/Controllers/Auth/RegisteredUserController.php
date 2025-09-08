@@ -70,7 +70,7 @@ class RegisteredUserController extends Controller
         $userRoleId = $user->roles()->first()->id ?? null;
 
         if ($userRoleId == 3) {
-            return redirect(route('indexproperty', absolute: false));
+            return redirect(route('dashboard', absolute: false));
         }
         else{
             return redirect(route('dashboard', absolute: false));
