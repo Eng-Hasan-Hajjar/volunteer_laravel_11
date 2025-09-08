@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
     // جلب دور المستخدم بعد تسجيل الدخول
     $userRoleId = $user->roles()->first()->id ?? null;
         if ($userRoleId == 3) {
-            return redirect()->intended(route('indexproperty', absolute: false));
+            return redirect()->intended(route('dashboard', absolute: false));
 
         } else {
             return redirect()->intended(route('dashboard', absolute: false));

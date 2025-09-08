@@ -1,7 +1,23 @@
 <x-guest-layout>
-   <h1 style="text-align: center"> إنشاء حساب   </h1>
-   
-   <br>
+    <style>
+        body, .container, form, .form-label, .form-control, .text-right, .invalid-feedback {
+            direction: rtl;
+            text-align: right;
+        }
+        .flex.items-center {
+            justify-content: flex-end;
+        }
+        .me-3, .me-4 {
+            margin-left: 0.75rem;
+            margin-right: 0;
+        }
+        x-primary-button {
+            margin: 10px;
+        }
+    </style>
+
+    <h1 style="text-align: center">إنشاء حساب</h1>
+    <br>
 
     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data" dir="rtl">
         @csrf
@@ -23,36 +39,33 @@
         <!-- كلمة المرور -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('كلمة المرور')" />
-            <x-text-input id="password" class="block mt-1 w-full text-right"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
+            <x-text-input id="password" class="block mt-1 w-full text-right" type="password" name="password" required autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
         <!-- تأكيد كلمة المرور -->
         <div class="mt-4">
             <x-input-label for="password_confirmation" :value="__('تأكيد كلمة المرور')" />
-            <x-text-input id="password_confirmation" class="block mt-1 w-full text-right"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+            <x-text-input id="password_confirmation" class="block mt-1 w-full text-right" type="password" name="password_confirmation" required autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
         <!-- الصورة الشخصية -->
-        <div class="mb-3" hidden>
-            <label for="profile_image" class="form-label">الصورة الشخصية (اختياري)</label>
-            <input type="file" class="form-control text-right" name="profile_image" accept="image/*">
+        <div class="mt-4">
+            <x-input-label for="profile_image" :value="__('الصورة الشخصية (اختياري)')" />
+            <x-text-input id="profile_image" class="block mt-1 w-full text-right" type="file" name="profile_image" accept="image/*" />
+            <x-input-error :messages="$errors->get('profile_image')" class="mt-2" />
         </div>
 
         <!-- إيصال الدفع -->
-        <div class="mb-3" hidden>
-            <label for="payment_receipt" class="form-label">إيصال الدفع (اختياري)</label>
-            <input type="file" class="form-control text-right" name="payment_receipt" accept="image/*">
+        <div class="mt-4" hidden>
+            <x-input-label for="payment_receipt" :value="__('إيصال الدفع (اختياري)')" />
+            <x-text-input id="payment_receipt" class="block mt-1 w-full text-right" type="file" name="payment_receipt" accept="image/*" />
+            <x-input-error :messages="$errors->get('payment_receipt')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-start mt-4"style="margin: 20px ; text-align: center;float:left" dir="auto">
-            <x-primary-button class="me-3" style="margin: 10px">
+        <div class="flex items-center justify-end mt-4">
+            <x-primary-button class="me-3">
                 <a href="{{ route('main_home') }}">الموقع</a>
             </x-primary-button>
 
